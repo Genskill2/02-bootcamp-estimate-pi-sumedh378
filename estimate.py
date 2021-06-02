@@ -5,21 +5,21 @@ import random
 class TestWallis(unittest.TestCase):
 
 	def wallis(n):
-    	if(n==0):
-    		return 0
-    	mul = 1.0
-    	for i in range(0,n+1):
-    		k = 4*(i**2)
-    		mul = mul*k/(k-1)
-    	return mul*2
+		if(n==0):
+			return 0
+		mul = 1.0
+		for i in range(0,n+1):
+			k = 4*(i**2)
+			mul = mul*k/(k-1)
+		return mul*2
 	
 	    
-    def test_low_iters(self):
-        for i in range(0, 5):
+	def test_low_iters(self):
+		for i in range(0, 5):
             pi = wallis(i)
             self.assertTrue(abs(pi - math.pi) > 0.15, msg=f"Estimate with just {i} iterations is {pi} which is too accurate.\n")
             
-    def test_high_iters(self):
+	def test_high_iters(self):
         for i in range(500, 600):
             pi = wallis(i)
             self.assertTrue(abs(pi - math.pi) < 0.01, msg=f"Estimate with even {i} iterations is {pi} which is not accurate enough.\n")
@@ -29,9 +29,10 @@ class TestWallis(unittest.TestCase):
 class TestMC(unittest.TestCase):
 
 	def monte_carlo( n ):
+		cp = 0
     	for i in range(0,n+1):
-    		x = random(-1,1)
-    		y = random(-1,1)
+    		x = random.random()
+    		y = random.random()
     		 
     		check = x*x + y*y
     		
@@ -59,3 +60,4 @@ class TestMC(unittest.TestCase):
     
 if __name__ == "__main__":
     unittest.main()
+    
