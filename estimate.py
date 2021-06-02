@@ -3,13 +3,7 @@ import unittest
 import random
 
 class TestWallis(unittest.TestCase):
-    def wallis(n):
-    	mul = 1.0
-    	for i in range(1,n):
-    		k = 4*i*i
-    		mul = mul*k/(k-1)
-    	return mul*2
-    	
+    
     def test_low_iters(self):
         for i in range(0, 5):
             pi = wallis(i)
@@ -19,6 +13,12 @@ class TestWallis(unittest.TestCase):
         for i in range(500, 600):
             pi = wallis(i)
             self.assertTrue(abs(pi - math.pi) < 0.01, msg=f"Estimate with even {i} iterations is {pi} which is not accurate enough.\n")
+    def wallis(n):
+    	mul = 1.0
+    	for i in range(1,n):
+    		k = 4*i*i
+    		mul = mul*k/(k-1)
+    	return mul*2
 
 
 class TestMC(unittest.TestCase):
